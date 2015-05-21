@@ -1,0 +1,32 @@
+discourse:
+  build: .
+  ports:
+    - "3000:3000"
+  volumes:
+    - .:/usr/src/app
+  links:
+    - postgres
+    - redis
+  env_file:
+    - .env
+
+sidekiq:
+  build: .
+  command: sidekiq -c 3 -v
+  links:
+    - postgres
+    - redis
+  env_file:
+    - .env
+
+postgres:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_USER=discourse
+  env_file:
+    - .env
+  volumes:
+    - postgres/data:/var/lib/postgresql/data
+
+redis:
+  image: redis:2.6

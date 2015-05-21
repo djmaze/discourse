@@ -1,5 +1,23 @@
 <a href="http://www.discourse.org/">![Logo](images/discourse.png)</a>
 
+# Discourse on Docker Compose
+
+_This is a fork of [Discourse](https://github.com/discourse/discourse) built to run using Docker Compose._
+
+Get started:
+
+    $ sudo docker-compose build
+    $ sudo docker-compose run discourse bash -c "sleep 3 && rake db:migrate assets:precompile"
+
+Copy the file `.env.sample` to `.env` and provide some configuration.
+
+Start Discourse:
+
+    $ sudo docker-compose up
+    $ xdg-open http://localhost:3000/
+
+# Original README
+
 Discourse is the 100% open source discussion platform built for the next decade of the Internet. It works as:
 
 - a mailing list
